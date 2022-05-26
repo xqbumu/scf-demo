@@ -16,10 +16,10 @@ build:
 	GOOS=linux GOARCH=amd64 go build $(LDFLAGS) -o main cmd/helloworld/main.go
 
 deploy:
-	serverless deploy
+	components deploy
 
 info:
-	serverless info
+	components info
 
 remove:
-	serverless remove
+	components remove
