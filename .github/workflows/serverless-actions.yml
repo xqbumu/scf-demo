@@ -36,7 +36,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
-        run: pnpm install --global serverless @serverless/components
+        run: pnpm install --global serverless serverless-tencent
 
       - name: Check Go Version
         run: go version
