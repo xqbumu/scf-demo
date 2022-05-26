@@ -1,4 +1,4 @@
-name: serverless-actions
+name: Serverless Actions
 on: [push]
 jobs:
   deploy:
@@ -36,7 +36,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
-        run: pnpm install --global serverless
+        run: pnpm install --global serverless @serverless/components
 
       - name: Check Go Version
         run: go version
