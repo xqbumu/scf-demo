@@ -25,17 +25,12 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
       - name: Setup pnpm cache
         uses: actions/cache@v3
         with:
           path: |
-            ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+            ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/serverless.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -51,9 +46,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --global serverless serverless-tencent
-
-      - name: Check Environment
-        run: env
 
       - name: Check Go Version
         run: go version
