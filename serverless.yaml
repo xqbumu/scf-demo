@@ -20,7 +20,7 @@ inputs:
       - .env.test
       - .env.release
       - .vscode
-  namespace: ${env:SCF_DEMO_NAMESPACE}
+  namespace: ${env:SCF_NAMESPACE}
   region: ap-shanghai
   runtime: Go1
   handler: main
@@ -38,7 +38,7 @@ inputs:
     - apigw:
         parameters:
           serviceName: serverless
-          serviceId: ${env:SCF_DEMO_SERVICE_ID}
+          serviceId: ${env:SCF_SERVICE_ID}
           protocols:
             - http
             - https
