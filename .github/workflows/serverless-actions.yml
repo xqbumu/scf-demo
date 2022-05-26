@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --global serverless serverless-tencent
 
+      - name: Check Environment
+        run: env
+
       - name: Check Go Version
         run: go version
 

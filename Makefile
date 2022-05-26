@@ -16,10 +16,10 @@ build:
 	GOOS=linux GOARCH=amd64 go build $(LDFLAGS) -o main cmd/helloworld/main.go
 
 deploy:
-	components deploy
+	SERVERLESS_PLATFORM_VENDOR=tencent sls deploy
 
 info:
-	components info
+	SERVERLESS_PLATFORM_VENDOR=tencent sls info
 
 remove:
-	components remove
+	SERVERLESS_PLATFORM_VENDOR=tencent sls remove
