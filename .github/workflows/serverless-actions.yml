@@ -58,8 +58,19 @@ jobs:
         run: |
           echo "STAGE=test" >> $GITHUB_ENV
 
-      - name: Make and deploy
-        run: make
+      - name: Build
+        run: make build
+
+      - name: Run UPX
+        uses: crazy-max/ghaction-upx@v2
+        with:
+          version: latest
+          files: |
+            ./main
+          args: -fq
+
+      - name: Deploy
+        run: make deploy
         env:
           TENCENT_APP_ID: ${{ secrets.TENCENT_APP_ID }}
           TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
