@@ -3,7 +3,7 @@ on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: development
+    environment: ${{ env.GITHUB_REF_NAME }}
     timeout-minutes: 5
     strategy:
       matrix:
@@ -24,7 +24,7 @@ jobs:
       - name: Use Golang ${{ matrix.go-version }}
         uses: actions/setup-go@v3
         with:
-          go-version: ${{ matrix.go }}
+          go-version: ${{ matrix.go-version }}
 
       - name: Setup pnpm cache
         uses: actions/cache@v3
