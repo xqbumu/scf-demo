@@ -49,12 +49,12 @@ jobs:
         run: pnpm install --global serverless serverless-tencent
 
       - name: Setup stage release
-        if: startsWith(github.ref_name, "main")
+        if: startsWith(github.ref_name, 'main')
         run: |
           echo "STAGE=release" >> $GITHUB_ENV
 
       - name: Setup stage development
-        if: startsWith(github.ref_name, "main") == false
+        if: startsWith(github.ref_name, 'main') == false
         run: |
           echo "STAGE=test" >> $GITHUB_ENV
 
