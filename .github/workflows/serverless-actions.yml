@@ -48,6 +48,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --global serverless serverless-tencent
 
+      # set the scf stage by ref name
       - name: Setup stage release
         if: startsWith(github.ref_name, 'main')
         run: |
@@ -58,6 +59,7 @@ jobs:
         run: |
           echo "STAGE=test" >> $GITHUB_ENV
 
+      # build and deploy
       - name: Build
         run: make build
 
